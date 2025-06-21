@@ -3,64 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Form Validation</title>
+    <title>Auth System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="form-container">
-        <div class="form-header">
-            <h1>Create Account</h1>
-            <p>Join our community today</p>
+    <div class="auth-container" id="authContainer">
+        <!-- Signup Form -->
+        <div class="form-container" id="signupForm">
+            <div class="form-header">
+                <h1>Create Account</h1>
+                <p>Join our community today</p>
+            </div>
+            
+            <form id="signupFormElement" novalidate>
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signupName" name="name" placeholder="Full Name">
+                    </div>
+                    <div class="error" id="signupNameError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signupEmail" name="email" placeholder="Email Address">
+                    </div>
+                    <div class="error" id="signupEmailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signupPassword" name="password" placeholder="Password">
+                        <i class="fas fa-eye toggle-password" data-target="signupPassword"></i>
+                    </div>
+                    <div class="error" id="signupPasswordError"></div>
+                    <div class="password-strength">
+                        <div class="strength-bar"></div>
+                        <span class="strength-text">Password strength</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Confirm Password">
+                        <i class="fas fa-eye toggle-password" data-target="signupConfirmPassword"></i>
+                    </div>
+                    <div class="error" id="signupConfirmPasswordError"></div>
+                </div>
+                
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Sign Up</span>
+                        <i class="fas fa-spinner fa-spin loading-icon"></i>
+                    </button>
+                    <p class="auth-link">Already have an account? <a href="#" id="showLogin">Log in</a></p>
+                </div>
+            </form>
         </div>
-        
-        <form id="myForm" novalidate>
-            <div class="form-group">
-                <div class="input-container">
-                    <i class="fas fa-user"></i>
-                    <input type="text" id="name" name="name" placeholder="Full Name">
-                </div>
-                <div class="error" id="nameError"></div>
+
+        <!-- Login Form -->
+        <div class="form-container hidden" id="loginForm">
+            <div class="form-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to your account</p>
             </div>
             
-            <div class="form-group">
-                <div class="input-container">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" name="email" placeholder="Email Address">
+            <form id="loginFormElement" novalidate>
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" name="email" placeholder="Email Address">
+                    </div>
+                    <div class="error" id="loginEmailError"></div>
                 </div>
-                <div class="error" id="emailError"></div>
+                
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" name="password" placeholder="Password">
+                        <i class="fas fa-eye toggle-password" data-target="loginPassword"></i>
+                    </div>
+                    <div class="error" id="loginPasswordError"></div>
+                    <div class="forgot-password">
+                        <a href="#" id="forgotPassword">Forgot password?</a>
+                    </div>
+                </div>
+                
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Log In</span>
+                        <i class="fas fa-spinner fa-spin loading-icon"></i>
+                    </button>
+                    <p class="auth-link">Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div class="form-container hidden" id="forgotPasswordForm">
+            <div class="form-header">
+                <h1>Reset Password</h1>
+                <p>Enter your email to receive reset instructions</p>
             </div>
             
-            <div class="form-group">
-                <div class="input-container">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password" name="password" placeholder="Password">
-                    <i class="fas fa-eye toggle-password" data-target="password"></i>
+            <form id="forgotPasswordFormElement" novalidate>
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="forgotEmail" name="email" placeholder="Email Address">
+                    </div>
+                    <div class="error" id="forgotEmailError"></div>
                 </div>
-                <div class="error" id="passwordError"></div>
-                <div class="password-strength">
-                    <div class="strength-bar"></div>
-                    <span class="strength-text">Password strength</span>
+                
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Instructions</span>
+                        <i class="fas fa-spinner fa-spin loading-icon"></i>
+                    </button>
+                    <p class="auth-link">Remember your password? <a href="#" id="showLoginFromForgot">Log in</a></p>
                 </div>
-            </div>
-            
-            <div class="form-group">
-                <div class="input-container">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
-                    <i class="fas fa-eye toggle-password" data-target="confirmPassword"></i>
-                </div>
-                <div class="error" id="confirmPasswordError"></div>
-            </div>
-            
-            <div class="form-footer">
-                <button type="submit" class="submit-btn">
-                    <span class="btn-text">Sign Up</span>
-                    <i class="fas fa-spinner fa-spin loading-icon"></i>
-                </button>
-                <p class="login-link">Already have an account? <a href="#">Log in</a></p>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
     <script src="validation.js"></script>
