@@ -1,0 +1,231 @@
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --success: #4cc9f0;
+    --error: #f72585;
+    --warning: #f8961e;
+    --gray: #adb5bd;
+    --gray-light: #e9ecef;
+    --white: #ffffff;
+    --black: #212529;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--black);
+    line-height: 1.6;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 450px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-header {
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+}
+
+.form-header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    opacity: 0.9;
+    font-size: 15px;
+}
+
+form {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-container i {
+    position: absolute;
+    left: 15px;
+    color: var(--gray);
+    font-size: 16px;
+}
+
+.input-container .toggle-password {
+    left: auto;
+    right: 15px;
+    cursor: pointer;
+    color: var(--gray);
+    transition: color 0.3s;
+}
+
+.input-container .toggle-password:hover {
+    color: var(--primary);
+}
+
+input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid var(--gray-light);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+input.invalid {
+    border-color: var(--error);
+}
+
+input.valid {
+    border-color: var(--success);
+}
+
+.error {
+    color: var(--error);
+    font-size: 14px;
+    margin-top: 5px;
+    min-height: 20px;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s;
+}
+
+.error.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.password-strength {
+    margin-top: 10px;
+    height: 6px;
+    background: var(--gray-light);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    background: var(--error);
+    transition: all 0.3s;
+}
+
+.strength-text {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.form-footer {
+    margin-top: 30px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.loading-icon {
+    display: none;
+    position: absolute;
+    right: 20px;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--gray);
+}
+
+.login-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .form-container {
+        margin: 10px;
+    }
+    
+    .form-header, form {
+        padding: 20px;
+    }
+}
